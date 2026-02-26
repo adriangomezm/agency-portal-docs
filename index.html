@@ -559,6 +559,12 @@
       .section { page-break-inside: avoid; }
       h2 { page-break-after: avoid; }
     }
+
+    /* Language Switcher */
+    .lang-switch { display: flex; gap: 4px; margin-top: 12px; }
+    .lang-switch a { padding: 4px 10px; border-radius: 4px; font-size: 12px; text-decoration: none; color: #999; transition: all 0.2s; }
+    .lang-switch a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .lang-switch a.active { color: #fff; background: var(--accent); font-weight: 600; }
   </style>
 </head>
 <body>
@@ -569,6 +575,10 @@
     <img src="talkpush-logo.png" alt="Talkpush">
     <h1>Agency Portal</h1>
     <div class="subtitle">Complete User Documentation &bull; v1.3</div>
+    <div class="lang-switch">
+      <a href="index.html" class="active">EN</a>
+      <a href="es.html">ES</a>
+    </div>
   </div>
 
   <div class="toc-section">

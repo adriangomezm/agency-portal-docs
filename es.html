@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talkpush Agency Portal - Documentación Completa del Usuario</title>
+  <style>
+    :root {
+      --bg: #FFFFF5;
+      --card: #FFFFFF;
+      --primary: #111115;
+      --accent: #F1C1F3;
+      --sage: #A8C5A0;
+      --sage-light: #D4E5CF;
+      --lavender: #C5B8D9;
+      --lavender-light: #E8E0F0;
+      --pink: #F1C1F3;
+      --pink-light: #F8E0F9;
+      --amber: #E8C87A;
+      --amber-light: #F4E4BC;
+      --sidebar: #1A1A1D;
+      --text: #333340;
+      --text-light: #666678;
+      --border: #E5E5E0;
+      --green: #22C55E;
+      --red: #EF4444;
+      --purple: #A855F7;
+      --gray: #9CA3AF;
+      --code-bg: #F5F5F0;
+      --radius: 6px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* Sidebar TOC */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 300px;
+      height: 100vh;
+      background: var(--sidebar);
+      color: #ccc;
+      overflow-y: auto;
+      padding: 24px 0;
+      z-index: 100;
+      scrollbar-width: thin;
+      scrollbar-color: #444 var(--sidebar);
+    }
+
+    .sidebar::-webkit-scrollbar { width: 6px; }
+    .sidebar::-webkit-scrollbar-track { background: var(--sidebar); }
+    .sidebar::-webkit-scrollbar-thumb { background: #444; border-radius: 3px; }
+
+    .sidebar-logo {
+      padding: 0 24px 20px;
+      border-bottom: 1px solid #333;
+      margin-bottom: 16px;
+    }
+
+    .sidebar-logo img {
+      height: 28px;
+      margin-bottom: 8px;
+      filter: brightness(0) invert(1);
+    }
+
+    .sidebar-logo h1 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.3px;
+    }
+
+    .sidebar-logo .subtitle {
+      font-size: 12px;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    .header-logo {
+      height: 40px;
+      margin-bottom: 12px;
+    }
+
+    .toc-section {
+      padding: 4px 0;
+    }
+
+    .toc-section-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #666;
+      padding: 12px 24px 6px;
+      font-weight: 600;
+    }
+
+    .toc-link {
+      display: block;
+      padding: 6px 24px;
+      color: #aaa;
+      text-decoration: none;
+      font-size: 13px;
+      transition: all 0.15s;
+      border-left: 3px solid transparent;
+    }
+
+    .toc-link:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.05);
+      border-left-color: var(--accent);
+    }
+
+    .toc-link.active {
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+      border-left-color: var(--accent);
+    }
+
+    /* Main Content */
+    .main {
+      margin-left: 300px;
+      padding: 40px 60px 80px;
+      max-width: 1100px;
+    }
+
+    /* Header */
+    .doc-header {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .doc-header h1 {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+
+    .doc-meta {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .doc-meta span {
+      font-size: 13px;
+      color: var(--text-light);
+      background: var(--card);
+      padding: 4px 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 48px;
+      scroll-margin-top: 24px;
+    }
+
+    h2 {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--accent);
+      letter-spacing: -0.3px;
+    }
+
+    h3 {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-top: 28px;
+      margin-bottom: 12px;
+    }
+
+    h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+
+    p { margin-bottom: 14px; }
+
+    /* Cards */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .card-accent {
+      border-left: 4px solid var(--accent);
+    }
+
+    .card-green { border-left-color: var(--green); }
+    .card-amber { border-left-color: var(--amber); }
+    .card-purple { border-left-color: var(--purple); }
+    .card-red { border-left-color: var(--red); }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    thead th {
+      background: var(--primary);
+      color: #fff;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-weight: 600;
+      padding: 12px 16px;
+      text-align: left;
+    }
+
+    tbody td {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      vertical-align: top;
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: rgba(0,0,0,0.01); }
+
+    /* Permission matrix special styling */
+    .perm-matrix td:nth-child(n+2) { text-align: center; font-weight: 600; }
+    .perm-yes { color: var(--green); }
+    .perm-no { color: var(--red); }
+    .perm-na { color: var(--gray); font-style: italic; font-weight: 400 !important; }
+
+    /* Code blocks */
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      overflow-x: auto;
+      margin-bottom: 20px;
+      font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--primary);
+    }
+
+    code {
+      font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+      font-size: 13px;
+      background: var(--code-bg);
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: #B5289E;
+    }
+
+    pre code { background: none; padding: 0; color: inherit; }
+
+    /* Tags */
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .tag-added { background: #DCFCE7; color: #166534; }
+    .tag-prev { background: #FEF3C7; color: #92400E; }
+    .tag-dup { background: #F3E8FF; color: #6B21A8; }
+    .tag-withdrawn { background: #F3F4F6; color: #4B5563; }
+
+    /* Role badges */
+    .role-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .role-owner { background: var(--pink-light); color: #8B1A8E; }
+    .role-company { background: var(--lavender-light); color: #5B3D8E; }
+    .role-agency-admin { background: var(--sage-light); color: #3D6B3A; }
+    .role-agency-user { background: var(--amber-light); color: #7A5C1A; }
+
+    /* Lists */
+    ul, ol {
+      margin-bottom: 14px;
+      padding-left: 24px;
+    }
+
+    li { margin-bottom: 6px; }
+    li strong { color: var(--primary); }
+
+    /* Alert/Warning boxes */
+    .alert {
+      padding: 16px 20px;
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .alert-warning {
+      background: #FEF3C7;
+      border: 1px solid #F59E0B;
+      color: #92400E;
+    }
+
+    .alert-info {
+      background: #EFF6FF;
+      border: 1px solid #3B82F6;
+      color: #1E40AF;
+    }
+
+    .alert-success {
+      background: #DCFCE7;
+      border: 1px solid #22C55E;
+      color: #166534;
+    }
+
+    .alert strong { display: block; margin-bottom: 4px; }
+
+    /* Flow diagram */
+    .flow-step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .flow-number {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      margin-right: 16px;
+      margin-top: 2px;
+    }
+
+    .flow-content { flex: 1; }
+    .flow-content h4 { margin-top: 0; margin-bottom: 4px; }
+    .flow-content p { margin-bottom: 4px; font-size: 14px; color: var(--text-light); }
+
+    /* Architecture diagram */
+    .arch-diagram {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .arch-diagram pre {
+      text-align: left;
+      display: inline-block;
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      font-size: 12px;
+    }
+
+    /* Grid layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .metric-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      text-align: center;
+    }
+
+    .metric-card .metric-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .metric-card .metric-value {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .metric-green .metric-value { color: var(--green); }
+    .metric-amber .metric-value { color: #D97706; }
+    .metric-purple .metric-value { color: var(--purple); }
+    .metric-red .metric-value { color: var(--red); }
+
+    /* Cascade diagram */
+    .cascade-tree {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 20px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .cascade-tree .level-0 { color: var(--red); font-weight: 600; }
+    .cascade-tree .level-1 { margin-left: 24px; color: #D97706; }
+    .cascade-tree .level-2 { margin-left: 48px; color: var(--text-light); }
+
+    /* Separator */
+    hr {
+      border: none;
+      height: 1px;
+      background: var(--border);
+      margin: 40px 0;
+    }
+
+    /* Back to top */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: opacity 0.2s, transform 0.2s;
+      opacity: 0;
+      transform: translateY(10px);
+      z-index: 50;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover { background: #333; }
+
+    /* Footer */
+    .footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 2px solid var(--border);
+      text-align: center;
+      color: var(--text-light);
+      font-size: 13px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .sidebar { width: 260px; }
+      .main { margin-left: 260px; padding: 32px 40px 64px; }
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        max-height: 60vh;
+        border-bottom: 2px solid #333;
+      }
+      .main { margin-left: 0; padding: 24px 20px 64px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-4 { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Screenshots */
+    .screenshot-container {
+      margin: 24px 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .screenshot-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .screenshot-caption {
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text-light);
+      background: #FAFAF5;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .screenshot-caption .caption-icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      opacity: 0.5;
+    }
+
+    .screenshot-caption strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Print */
+    @media print {
+      .sidebar, .back-to-top { display: none; }
+      .main { margin-left: 0; padding: 20px; max-width: none; }
+      .section { page-break-inside: avoid; }
+      h2 { page-break-after: avoid; }
+    }
+
+    /* Language switcher */
+    .lang-switch { display: flex; gap: 4px; margin-top: 12px; }
+    .lang-switch a { padding: 4px 10px; border-radius: 4px; font-size: 12px; text-decoration: none; color: #999; transition: all 0.2s; }
+    .lang-switch a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .lang-switch a.active { color: #fff; background: var(--accent); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar TOC -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <img src="talkpush-logo.png" alt="Talkpush">
+    <h1>Agency Portal</h1>
+    <div class="subtitle">Documentación Completa del Usuario &bull; v1.3</div>
+    <div class="lang-switch">
+      <a href="index.html">EN</a>
+      <a href="es.html" class="active">ES</a>
+    </div>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-title">Descripción General</div>
+    <a href="#s1" class="toc-link">1. Descripción del Producto</a>
+    <a href="#s2" class="toc-link">2. Cómo se Conecta el Portal a Talkpush</a>
+    <a href="#s3" class="toc-link">3. Roles de Usuario y Permisos</a>
+    <a href="#s4" class="toc-link">4. Primeros Pasos</a>
+    <a href="#s5" class="toc-link">5. Navegación e Interfaz</a>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-title">Candidatos</div>
+    <a href="#s6" class="toc-link">6. Mis Candidatos</a>
+    <a href="#s7" class="toc-link">7. Flujo de Envío (Completo)</a>
+    <a href="#s8" class="toc-link">8. Detalle del Candidato y Ciclo de Vida</a>
+    <a href="#s9" class="toc-link">9. Agency Pool</a>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-title">Administración</div>
+    <a href="#s10" class="toc-link">10. Gestión de Usuarios</a>
+    <a href="#s11" class="toc-link">11. Gestión de Agencias</a>
+    <a href="#s12" class="toc-link">12. Gestión de Campañas</a>
+    <a href="#s13" class="toc-link">13. Gestión de Países y CRM</a>
+    <a href="#s14" class="toc-link">14. Gestión de Carpetas</a>
+    <a href="#s15" class="toc-link">15. Gestión de Empresas</a>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-title">Analíticas e Informes</div>
+    <a href="#s16" class="toc-link">16. Dashboard de Métricas</a>
+    <a href="#s17" class="toc-link">17. Informes y Exportación Excel</a>
+    <a href="#s18" class="toc-link">18. Importación y Limpieza de Datos</a>
+    <a href="#s19" class="toc-link">19. Gestión de Perfil</a>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-title">Detalles Técnicos</div>
+    <a href="#s20" class="toc-link">20. Etiquetas y Detección de Duplicados</a>
+    <a href="#s21" class="toc-link">21. Integración con Talkpush CRM</a>
+    <a href="#s22" class="toc-link">22. Procesamiento de CV con IA</a>
+    <a href="#s23" class="toc-link">23. Comentarios y Sincronización CRM</a>
+    <a href="#s24" class="toc-link">24. Activación/Desactivación en Cascada</a>
+    <a href="#s25" class="toc-link">25. Características de Seguridad</a>
+  </div>
+
+  <div class="toc-section">
+    <div class="toc-section-title">Referencia</div>
+    <a href="#s26" class="toc-link">26. Preguntas Frecuentes</a>
+    <a href="#s27" class="toc-link">27. Glosario</a>
+    <a href="#appendix-a" class="toc-link">A. Acceso a Páginas por Rol</a>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="main">
+
+  <!-- Header -->
+  <div class="doc-header">
+    <img src="talkpush-logo.png" alt="Talkpush" class="header-logo">
+    <h1>Talkpush Agency Portal</h1>
+    <div class="doc-meta">
+      <span>Version 1.0</span>
+      <span>Última Actualización: 20 de Febrero de 2026</span>
+      <span>Producto: Talkpush Agency Portal</span>
+    </div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="section" id="s1">
+    <h2>1. Descripción del Producto</h2>
+
+    <h3>¿Qué es el Agency Portal?</h3>
+    <p>El Talkpush Agency Portal es una <strong>aplicación web</strong> que permite a las organizaciones gestionar sus relaciones con agencias externas de reclutamiento y personal. Cada empresa tiene su propio espacio de trabajo separado. Proporciona una plataforma centralizada donde:</p>
+    <ul>
+      <li><strong>Las agencias de personal</strong> envían referencias de candidatos con currículums</li>
+      <li><strong>Los equipos internos de reclutamiento</strong> rastrean, revisan y gestionan todos los candidatos enviados por las agencias</li>
+      <li><strong>La IA procesa automáticamente</strong> los currículums y detecta candidatos duplicados</li>
+      <li><strong>Todos los datos se sincronizan</strong> bidireccionalmente con el Talkpush CRM en tiempo real</li>
+    </ul>
+
+    <h3>¿Para quién es?</h3>
+    <table>
+      <thead><tr><th>Audiencia</th><th>Qué Hacen</th></tr></thead>
+      <tbody>
+        <tr><td><span class="role-badge role-owner">Talkpush Owners</span></td><td>Administradores completos del sistema que gestionan toda la plataforma en múltiples empresas</td></tr>
+        <tr><td><span class="role-badge role-company">Company Admins</span></td><td>Gerentes internos de reclutamiento en una empresa específica que supervisan todas las agencias, campañas y candidatos</td></tr>
+        <tr><td><span class="role-badge role-agency-admin">Agency Admins</span></td><td>Gerentes de agencia que gestionan su equipo de reclutadores y ven todos los candidatos de su agencia</td></tr>
+        <tr><td><span class="role-badge role-agency-user">Agency Users</span></td><td>Reclutadores individuales de agencia que envían y rastrean sus propios candidatos</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Capacidades Clave</h3>
+    <div class="grid-2">
+      <div class="card card-accent">
+        <h4>Gestión de Candidatos</h4>
+        <ul>
+          <li>Envío de referencias de candidatos con carga de currículum</li>
+          <li>Análisis y resumen de currículum con IA</li>
+          <li>Detección inteligente de duplicados con ventanas de propiedad configurables</li>
+          <li>Flujo de trabajo de retiro de candidatos</li>
+        </ul>
+      </div>
+      <div class="card card-accent">
+        <h4>Integración y Analíticas</h4>
+        <ul>
+          <li>Sincronización en tiempo real con Talkpush CRM</li>
+          <li>Soporte multi-país y multi-empresa</li>
+          <li>Control de acceso basado en roles (jerarquía de 4 niveles)</li>
+          <li>Dashboard de analíticas y exportación a Excel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="section" id="s2">
+    <h2>2. Cómo se Conecta el Portal a Talkpush</h2>
+
+    <h3>Cómo se Conecta Todo</h3>
+    <p>El Agency Portal es una aplicación web que se conecta a varios servicios externos para potenciar sus funcionalidades:</p>
+    <ul>
+      <li><strong>Talkpush CRM</strong> &mdash; Una conexión por país. Todos los envíos de candidatos, currículums, comentarios y retiros se sincronizan con el CRM en tiempo real.</li>
+      <li><strong>Análisis de CV con IA</strong> &mdash; Los currículums cargados son analizados automáticamente por un modelo de IA para generar resúmenes profesionales, educativos y de experiencia.</li>
+      <li><strong>Notificaciones por Email</strong> &mdash; Los correos de activación de cuenta, restablecimiento de contraseña y recordatorios de invitación se envían automáticamente.</li>
+    </ul>
+
+    <h3>Sincronización de Datos con Talkpush CRM</h3>
+    <p>El Agency Portal se conecta a <strong>una o más instancias de Talkpush CRM</strong> (una por país). Los datos fluyen en ambas direcciones:</p>
+
+    <h4>Flujo de Datos</h4>
+    <table>
+      <thead><tr><th>Dirección</th><th>Qué se Sincroniza</th><th>Cuándo</th></tr></thead>
+      <tbody>
+        <tr><td>Portal &rarr; CRM</td><td>Nuevos envíos de candidatos</td><td>Cuando se crea un candidato</td></tr>
+        <tr><td>Portal &rarr; CRM</td><td>Documentos de currículum (PDF/DOCX)</td><td>Inmediatamente después de crear el candidato</td></tr>
+        <tr><td>Portal &rarr; CRM</td><td>Resúmenes de CV generados por IA</td><td>Durante la creación del candidato</td></tr>
+        <tr><td>Portal &rarr; CRM</td><td>Comentarios/notas</td><td>Cuando se agrega un comentario</td></tr>
+        <tr><td>Portal &rarr; CRM</td><td>Estado de retiro</td><td>Cuando se retira un candidato</td></tr>
+        <tr><td>CRM &rarr; Portal</td><td>Etapa/carpeta del pipeline del candidato</td><td>Al ver el detalle del candidato</td></tr>
+        <tr><td>CRM &rarr; Portal</td><td>Notas de rechazo</td><td>Al ver el detalle del candidato</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section" id="s3">
+    <h2>3. Roles de Usuario y Permisos</h2>
+
+    <p>El Agency Portal utiliza un <strong>sistema de roles de 4 niveles</strong>. A cada usuario se le asigna exactamente un rol, que determina lo que puede ver y hacer.</p>
+
+    <h3>Jerarquía de Roles</h3>
+    <div class="card">
+      <pre style="background:none;border:none;padding:0;margin:0;box-shadow:none;">Nivel 1: <span class="role-badge role-owner">Talkpush Owner</span>  (más alto)
+    └── Nivel 4: <span class="role-badge role-company">Company Admin</span>
+        └── Nivel 2: <span class="role-badge role-agency-admin">Agency Admin</span>
+            └── Nivel 3: <span class="role-badge role-agency-user">Agency User</span>  (más bajo)</pre>
+    </div>
+
+    <h3>Matriz Detallada de Permisos</h3>
+    <table class="perm-matrix">
+      <thead>
+        <tr><th>Permiso</th><th>Talkpush Owner</th><th>Company Admin</th><th>Agency Admin</th><th>Agency User</th></tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="5" style="background:var(--code-bg);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Gestión de Campañas</td></tr>
+        <tr><td>Crear/Editar campañas</td><td class="perm-yes">&#10003;</td><td class="perm-yes">&#10003;</td><td class="perm-no">&#10007;</td><td class="perm-no">&#10007;</td></tr>
+        <tr><td>Ver todas las campañas</td><td class="perm-yes">&#10003;</td><td class="perm-yes">&#10003;</td><td class="perm-no">&#10007;</td><td class="perm-no">&#10007;</td></tr>
+
+        <tr><td colspan="5" style="background:var(--code-bg);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Gestión de Agencias</td></tr>
+        <tr><td>Crear/Editar agencias</td><td class="perm-yes">&#10003;</td><td class="perm-yes">&#10003;</td><td class="perm-no">&#10007;</td><td class="perm-no">&#10007;</td></tr>
+        <tr><td>Ver todas las agencias</td><td class="perm-yes">&#10003;</td><td class="perm-yes">&#10003;</td><td class="perm-no">&#10007;</td><td class="perm-no">&#10007;</td></tr>
+
+        <tr><td colspan="5" style="background:var(--code-bg);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Gestión de Usuarios</td></tr>
+        <tr><td>Gestionar todos los usuarios (incluyendo cuentas Owner)</td><td class="perm-yes">&#10003;</td><td class="perm-no">&#10007;</td><td class="perm-no">&#10007;</td><td class="perm-no">&#10007;</td></tr>
+        <tr><td>Gestionar usuarios de la empresa</td><td class="perm-yes">&#10003;</td><td class="perm-yes">&#10003;</td><td class="perm-no">&#10007;</td><td class="perm-no">&#10007;</td></tr>
+        <tr><td>Gestionar usuarios de la agencia</td><td class="perm-yes">&#10003;</td><td class="perm-yes">&#10003;</td><td class="perm-yes">&#10003;</td><td class="perm-no">&#10007;</td></tr>
+
+        <tr><td colspan="5" style="background:var(--code-bg);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Configuración del Sistema</td></tr>
+        <tr><td>Gestionar carpetas</td><td class="perm-yes">&#10003;</td><td class="perm-yes">&#10003;</td><td class="perm-no">&#10007;</td><td class="perm-no">&#10007;</td></tr>
+        <tr><td>Gestionar países/CRM</td><td class="perm-yes">&#10003;</td><td class="perm-yes">&#10003;</td><td class="perm-no">&#10007;</td><td class="perm-no">&#10007;</td></tr>
+        <tr><td>Gestionar empresas</td><td class="perm-yes">&#10003;</td><td class="perm-no">&#10007;</td><td class="perm-no">&#10007;</td><td class="perm-no">&#10007;</td></tr>
+        <tr><td>Importar datos</td><td class="perm-yes">&#10003;</td><td class="perm-no">&#10007;</td><td class="perm-no">&#10007;</td><td class="perm-no">&#10007;</td></tr>
+
+        <tr><td colspan="5" style="background:var(--code-bg);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Acceso a Candidatos</td></tr>
+        <tr><td>Ver todos los candidatos</td><td class="perm-yes">&#10003;</td><td class="perm-yes">&#10003;</td><td class="perm-no">&#10007;</td><td class="perm-no">&#10007;</td></tr>
+        <tr><td>Ver candidatos de la agencia</td><td class="perm-na">N/A</td><td class="perm-na">N/A</td><td class="perm-yes">&#10003;</td><td class="perm-no">&#10007;</td></tr>
+        <tr><td>Ver candidatos propios</td><td class="perm-na">N/A</td><td class="perm-na">N/A</td><td class="perm-na">N/A</td><td class="perm-yes">&#10003;</td></tr>
+        <tr><td>Cargar candidatos</td><td class="perm-yes">&#10003;</td><td class="perm-yes">&#10003;</td><td class="perm-yes">&#10003;</td><td class="perm-yes">&#10003;</td></tr>
+        <tr><td>Editar todos los candidatos</td><td class="perm-yes">&#10003;</td><td class="perm-yes">&#10003;</td><td class="perm-no">&#10007;</td><td class="perm-no">&#10007;</td></tr>
+        <tr><td>Editar candidatos de la agencia</td><td class="perm-na">N/A</td><td class="perm-na">N/A</td><td class="perm-yes">&#10003;</td><td class="perm-no">&#10007;</td></tr>
+        <tr><td>Editar candidatos propios</td><td class="perm-na">N/A</td><td class="perm-na">N/A</td><td class="perm-na">N/A</td><td class="perm-yes">&#10003;</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Descripción de Roles</h3>
+    <div class="grid-2">
+      <div class="card card-accent" style="border-left-color:#E88EEB;">
+        <h4><span class="role-badge role-owner">Talkpush Owner</span> &mdash; Nivel 1</h4>
+        <ul>
+          <li><strong>Acceso completo al sistema</strong> en todas las empresas</li>
+          <li>Puede <strong>seleccionar un contexto de empresa</strong> para limitar su vista</li>
+          <li>Puede crear y gestionar todas las entidades</li>
+          <li>Único rol que puede gestionar empresas e importar datos</li>
+          <li>Algunos Talkpush Owners tienen <strong>acceso elevado</strong> que permite acceso sin restricciones a todas las funciones del portal</li>
+        </ul>
+      </div>
+      <div class="card card-accent" style="border-left-color:var(--lavender);">
+        <h4><span class="role-badge role-company">Company Admin</span> &mdash; Nivel 4</h4>
+        <ul>
+          <li>Gestiona todo <strong>dentro de su empresa asignada</strong></li>
+          <li>Puede crear agencias, campañas, usuarios</li>
+          <li>Puede ver todos los candidatos de todas las agencias</li>
+          <li>No puede crear Talkpush Owners</li>
+        </ul>
+      </div>
+      <div class="card card-accent" style="border-left-color:var(--sage);">
+        <h4><span class="role-badge role-agency-admin">Agency Admin</span> &mdash; Nivel 2</h4>
+        <ul>
+          <li>Gestiona usuarios <strong>solo dentro de su agencia</strong></li>
+          <li>Puede ver todos los candidatos enviados por su agencia</li>
+          <li>Puede cargar nuevos candidatos</li>
+          <li>No puede ver candidatos de otras agencias</li>
+        </ul>
+      </div>
+      <div class="card card-accent" style="border-left-color:var(--amber);">
+        <h4><span class="role-badge role-agency-user">Agency User</span> &mdash; Nivel 3</h4>
+        <ul>
+          <li>Rol más restringido</li>
+          <li>Solo puede ver y gestionar <strong>sus propios candidatos</strong></li>
+          <li>Puede cargar nuevos candidatos</li>
+          <li>No puede gestionar ningún usuario</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="alert alert-info">
+      <strong>Prevención de Escalamiento de Roles</strong>
+      Los usuarios no pueden asignar roles superiores al suyo. Un Company Admin no puede crear un Talkpush Owner. Un Agency Admin no puede crear un Company Admin.
+    </div>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="section" id="s4">
+    <h2>4. Primeros Pasos</h2>
+
+    <h3>Flujo de Activación de Cuenta</h3>
+    <div class="flow-step"><div class="flow-number">1</div><div class="flow-content"><h4>Cuenta Creada</h4><p>Un administrador crea su cuenta en el portal</p></div></div>
+    <div class="flow-step"><div class="flow-number">2</div><div class="flow-content"><h4>Email de Activación</h4><p>Recibes un correo electrónico con un enlace de activación único</p></div></div>
+    <div class="flow-step"><div class="flow-number">3</div><div class="flow-content"><h4>Hacer Clic en el Enlace</h4><p>Haz clic en el enlace de activación (válido por <strong>7 días</strong>)</p></div></div>
+    <div class="flow-step"><div class="flow-number">4</div><div class="flow-content"><h4>Establecer Contraseña</h4><p>Establece tu contraseña en la página de activación</p></div></div>
+    <div class="flow-step"><div class="flow-number">5</div><div class="flow-content"><h4>Iniciar Sesión</h4><p>Inicia sesión con tu correo electrónico y nueva contraseña</p></div></div>
+
+    <div class="alert alert-warning">
+      <strong>¿Enlace de Activación Expirado?</strong>
+      Contacta a tu administrador para reenviar la invitación. Pueden hacer clic en "Reenviar Invitación" en tu perfil de usuario.
+    </div>
+
+    <h3>Iniciar Sesión</h3>
+    <ol>
+      <li>Navega a la URL del portal (proporcionada por tu empresa)</li>
+      <li>Ingresa tu <strong>dirección de correo electrónico</strong> y <strong>contraseña</strong></li>
+      <li>Haz clic en <strong>"Iniciar Sesión"</strong></li>
+    </ol>
+
+    <h3>Contraseña Olvidada</h3>
+    <ol>
+      <li>Haz clic en <strong>"¿Olvidaste tu Contraseña?"</strong> en la página de inicio de sesión</li>
+      <li>Ingresa tu dirección de correo electrónico registrada</li>
+      <li>Revisa tu correo para un enlace de restablecimiento (válido por <strong>1 hora</strong>)</li>
+      <li>Haz clic en el enlace y establece una nueva contraseña</li>
+    </ol>
+
+    <h3>Configuración Inicial (Para Administradores)</h3>
+    <div class="flow-step"><div class="flow-number">1</div><div class="flow-content"><h4>Crear una Empresa</h4><p>Configura el nombre de la empresa, nombre de marca y correo CRM</p></div></div>
+    <div class="flow-step"><div class="flow-number">2</div><div class="flow-content"><h4>Crear Países</h4><p>Configura cada instancia de Talkpush CRM con URL y API key</p></div></div>
+    <div class="flow-step"><div class="flow-number">3</div><div class="flow-content"><h4>Crear Carpetas</h4><p>Mapea las etapas de tu pipeline de Talkpush</p></div></div>
+    <div class="flow-step"><div class="flow-number">4</div><div class="flow-content"><h4>Crear Campañas</h4><p>Agrega campañas de reclutamiento activas</p></div></div>
+    <div class="flow-step"><div class="flow-number">5</div><div class="flow-content"><h4>Crear Agencias</h4><p>Agrega tus agencias de personal asociadas</p></div></div>
+    <div class="flow-step"><div class="flow-number">6</div><div class="flow-content"><h4>Invitar Usuarios</h4><p>Crea cuentas de usuario para reclutadores y administradores de agencias</p></div></div>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="section" id="s5">
+    <h2>5. Navegación y Descripción de la Interfaz</h2>
+
+    <div class="screenshot-container">
+      <img src="screenshots/home-page.png" alt="Página principal del Agency Portal mostrando la navegación lateral, lista de candidatos y etiquetas de estado">
+      <div class="screenshot-caption">
+        <svg class="caption-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span><strong>Figura 1:</strong> Página principal del Agency Portal — la barra de navegación lateral oscura a la izquierda, lista de candidatos con etiquetas de estado (Agregado, Enviado Previamente, Duplicado), y la barra superior con menú de usuario.</span>
+      </div>
+    </div>
+
+    <h3>Navegación Lateral</h3>
+    <table>
+      <thead><tr><th>Elemento del Menú</th><th>Disponible Para</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Mis Candidatos</strong></td><td>Todos</td><td>Tus candidatos enviados personalmente</td></tr>
+        <tr><td><strong>Agency Pool</strong></td><td>Agency Admin, Company Admin, Owner</td><td>Todos los candidatos de todas las agencias</td></tr>
+        <tr><td><strong>Usuarios</strong></td><td>Agency Admin+</td><td>Gestión de cuentas de usuario</td></tr>
+        <tr><td><strong>Agencias</strong></td><td>Company Admin, Owner</td><td>Gestión de agencias</td></tr>
+        <tr><td><strong>Métricas</strong></td><td>Company Admin, Owner</td><td>Dashboard de analíticas</td></tr>
+        <tr><td><strong>Campañas</strong></td><td>Company Admin, Owner</td><td>Gestión de campañas</td></tr>
+        <tr><td><strong>Carpetas</strong></td><td>Company Admin, Owner</td><td>Mapeo de etapas del pipeline</td></tr>
+        <tr><td><strong>Países</strong></td><td>Company Admin, Owner</td><td>Configuración de instancias CRM</td></tr>
+        <tr><td><strong>Empresa</strong></td><td>Solo Owner</td><td>Gestión de empresas</td></tr>
+        <tr><td><strong>Importar Datos</strong></td><td>Solo Owner</td><td>Herramientas de importación/limpieza de datos</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Barra Superior</h3>
+    <ul>
+      <li><strong>Título de página</strong> a la izquierda</li>
+      <li><strong>Menú desplegable de usuario</strong> a la derecha (haz clic en tu nombre/avatar): Editar Perfil, Cerrar Sesión</li>
+    </ul>
+
+    <h3>Barra de Contexto de Empresa (Solo Talkpush Owner)</h3>
+    <p>Cuando un Talkpush Owner selecciona una empresa específica, aparece una <strong>barra de contexto</strong> mostrando el nombre de la empresa seleccionada. Todos los datos se filtran a esa empresa. Haz clic en el botón <strong>X</strong> para limpiar la selección y volver a la vista global.</p>
+
+    <h3>Notificaciones Toast</h3>
+    <p>Los mensajes de éxito y error aparecen como notificaciones Toast en la esquina superior derecha. Se ocultan automáticamente después de unos segundos.</p>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="section" id="s6">
+    <h2>6. Gestión de Candidatos (Mis Candidatos)</h2>
+
+    <div class="screenshot-container">
+      <img src="screenshots/my-candidates-main-view.png" alt="Vista principal de Mis Candidatos mostrando la lista de candidatos con nombres, emails, teléfonos, etapas, estados, campañas y países">
+      <div class="screenshot-caption">
+        <svg class="caption-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span><strong>Figura 2:</strong> Vista de lista de Mis Candidatos — muestra todos los candidatos que has enviado con su nombre, email, teléfono, etapa, etiquetas de estado, campaña asignada, fecha de ingreso e indicadores de país.</span>
+      </div>
+    </div>
+
+    <h3>Vista de Lista de Candidatos</h3>
+
+    <h4>Estadísticas del Encabezado</h4>
+    <p>Tres chips de colores muestran tus estadísticas de envío:</p>
+    <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
+      <span class="tag tag-added">Agregado</span> &mdash; Nuevos candidatos agregados exitosamente
+      &nbsp;&nbsp;
+      <span class="tag tag-prev">Enviado Previamente</span> &mdash; Ya enviados por tu agencia
+      &nbsp;&nbsp;
+      <span class="tag tag-dup">Duplicado</span> &mdash; Perteneciente a otra agencia
+    </div>
+
+    <h4>Filtros</h4>
+    <ul>
+      <li><strong>Campaña</strong> desplegable &mdash; Filtrar por campaña específica</li>
+      <li><strong>Búsqueda</strong> &mdash; Buscar por nombre, email o teléfono del candidato</li>
+      <li><strong>Filtro de Estado/Etiqueta</strong> &mdash; Filtrar por tipo de etiqueta</li>
+    </ul>
+
+    <h4>Columnas de la Tabla</h4>
+    <table>
+      <thead><tr><th>Columna</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td>Nombre</td><td>Nombre completo del candidato (enlace clickeable al detalle)</td></tr>
+        <tr><td>Email</td><td>Dirección de correo electrónico</td></tr>
+        <tr><td>Teléfono</td><td>Número de teléfono con código de país</td></tr>
+        <tr><td>Campaña</td><td>Campaña a la que fue enviado el candidato</td></tr>
+        <tr><td>País</td><td>País de la campaña (visible para Owner/Company Admin)</td></tr>
+        <tr><td>Etapa</td><td>Etapa actual del pipeline desde Talkpush CRM (si está habilitado)</td></tr>
+        <tr><td>Etiqueta</td><td>Etiqueta de estado con código de color</td></tr>
+        <tr><td>Fecha</td><td>Fecha de envío</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Agregar un Nuevo Candidato</h3>
+    <p>Haz clic en el botón <strong>"Agregar Candidato"</strong> para abrir el formulario de envío.</p>
+
+    <div class="screenshot-container">
+      <img src="screenshots/add-candidate.png" alt="Panel del formulario Agregar Candidato mostrando campos para Nombre, Apellido, Email, Código de País, Número de Teléfono, selección de Campaña y carga de Currículum">
+      <div class="screenshot-caption">
+        <svg class="caption-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span><strong>Figura 3:</strong> Panel deslizable de Agregar Candidato — completa el nombre del candidato, email, número de teléfono con código de país, selecciona una campaña y opcionalmente carga un currículum (PDF o DOCX, máximo 5MB).</span>
+      </div>
+    </div>
+
+    <h4>Campos Obligatorios</h4>
+    <table>
+      <thead><tr><th>Campo</th><th>Descripción</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td>Nombre</td><td>Nombre del candidato</td><td>"Maria"</td></tr>
+        <tr><td>Apellido</td><td>Apellido del candidato</td><td>"Garcia"</td></tr>
+        <tr><td>Email</td><td>Dirección de correo electrónico válida</td><td>"maria@email.com"</td></tr>
+        <tr><td>Código de País</td><td>Código telefónico del país (desplegable)</td><td>"+63" (Filipinas)</td></tr>
+        <tr><td>Número de Teléfono</td><td>Número de teléfono sin código de país</td><td>"9171234567"</td></tr>
+        <tr><td>Campaña</td><td>Seleccionar de las campañas disponibles</td><td>"Servicio al Cliente Q1"</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Campos Opcionales</h4>
+    <table>
+      <thead><tr><th>Campo</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td>Currículum</td><td>Carga de archivo PDF o DOCX</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 7 -->
+  <div class="section" id="s7">
+    <h2>7. El Flujo de Envío de Candidatos (Completo)</h2>
+
+    <p>Esta sección describe el <strong>flujo completo</strong> desde el momento en que haces clic en "Enviar" hasta que el candidato aparece tanto en el Portal como en Talkpush CRM.</p>
+
+    <h3>Flujo Paso a Paso</h3>
+
+    <div class="flow-step"><div class="flow-number">1</div><div class="flow-content"><h4>Completar el Formulario de Envío</h4><p>Ingresa el Nombre, Apellido, Email, Teléfono del candidato, selecciona una Campaña y opcionalmente adjunta un Currículum (PDF o DOCX, máximo 10MB).</p></div></div>
+    <div class="flow-step"><div class="flow-number">2</div><div class="flow-content"><h4>Validación</h4><p>El sistema verifica que todos los campos requeridos estén completos, que la campaña seleccionada esté activa y que tu agencia esté asignada a esa campaña.</p></div></div>
+    <div class="flow-step"><div class="flow-number">3</div><div class="flow-content"><h4>Verificación de Duplicados</h4><p>El sistema verifica si un candidato con el mismo email o número de teléfono ya ha sido enviado en este país. Según el resultado, al candidato se le asigna una de tres etiquetas: <span class="tag tag-added">Agregado</span>, <span class="tag tag-prev">Enviado Previamente</span> o <span class="tag tag-dup">Duplicado</span>. Consulta <a href="#s7-tags">Qué Significa Cada Etiqueta</a> a continuación para más detalles.</p></div></div>
+    <div class="flow-step"><div class="flow-number">4</div><div class="flow-content"><h4>Análisis de Currículum (si se adjuntó)</h4><p>Si cargaste un currículum, el sistema lee el archivo y genera tres resúmenes con IA: <strong>Resumen Profesional</strong>, <strong>Educación</strong> y <strong>Experiencia</strong>. Estos aparecen en la página de detalle del candidato.</p></div></div>
+    <div class="flow-step"><div class="flow-number">5</div><div class="flow-content"><h4>Candidato Enviado a Talkpush CRM</h4><p>El Portal intenta crear el candidato en el Talkpush CRM como una nueva solicitud. Si se adjuntó un currículum, también se carga al CRM como documento. Si el CRM rechaza el envío (por ejemplo, porque el CRM no permite duplicados para ese cliente), verás una advertencia &mdash; pero el candidato permanece guardado en el Portal. Consulta la <a href="#s7-crm-rejection">nota sobre rechazo del CRM</a> a continuación.</p></div></div>
+    <div class="flow-step"><div class="flow-number">6</div><div class="flow-content"><h4>Confirmación</h4><p>Ves un mensaje de éxito confirmando que el candidato fue creado. La etiqueta (<span class="tag tag-added">Agregado</span>, <span class="tag tag-prev">Enviado Previamente</span> o <span class="tag tag-dup">Duplicado</span>) se muestra para que conozcas el estado del candidato.</p></div></div>
+
+    <div class="alert alert-info" id="s7-tags">
+      <strong>Importante:</strong> Independientemente de la etiqueta, el Portal <strong>siempre</strong> intenta crear el candidato en el Talkpush CRM como una nueva solicitud. La etiqueta es informativa &mdash; te indica si esta persona ya era conocida en el sistema, pero no bloquea el envío.
+    </div>
+
+    <div class="alert alert-warning" id="s7-crm-rejection">
+      <strong>¿Qué pasa si el CRM no acepta al candidato?</strong><br>
+      Algunas configuraciones de Talkpush CRM no permiten candidatos duplicados. Si el CRM rechaza el envío por cualquier razón (incluyendo duplicados), sucede lo siguiente:
+      <ul style="margin-top: 8px; margin-bottom: 0;">
+        <li>El candidato <strong>se guarda en el Portal</strong> &mdash; no se pierden datos</li>
+        <li>Verás un <strong>mensaje de éxito con una advertencia</strong>: <em>"Candidato creado exitosamente, pero no se pudo agregar a Talkpush CRM"</em></li>
+        <li>El candidato <strong>no aparecerá en el CRM</strong> &mdash; solo existe en el Portal</li>
+        <li>El error específico del CRM se muestra en la advertencia para que puedas entender lo que sucedió</li>
+        <li>Contacta a tu administrador si ves esta advertencia repetidamente para el mismo país</li>
+      </ul>
+    </div>
+
+    <h3>Qué Significa Cada Etiqueta</h3>
+
+    <table>
+      <thead><tr><th>Etiqueta</th><th>Cuándo Aparece</th><th>Qué Sucede</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="tag tag-added">Agregado</span></td>
+          <td>Es la primera vez que este candidato se envía en este país, O los envíos anteriores han expirado (fuera de la ventana de propiedad), O el envío anterior fue retirado.</td>
+          <td>El candidato se crea en el Portal y en Talkpush CRM. El currículum y los resúmenes de IA se procesan. Esta es una referencia completamente nueva.</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-prev">Enviado Previamente</span></td>
+          <td>Un candidato con el mismo email o teléfono ya fue enviado por <strong>tu misma agencia</strong> dentro de la ventana de propiedad (típicamente 24 meses).</td>
+          <td>El candidato <strong>aún se crea</strong> en el Portal y en Talkpush CRM como una nueva solicitud. La etiqueta te informa que tu agencia ya ha enviado a esta persona antes. El currículum y los resúmenes de IA se procesan normalmente.</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-dup">Duplicado</span></td>
+          <td>Un candidato con el mismo email o teléfono ya fue enviado por una <strong>agencia diferente</strong> dentro de la ventana de propiedad (típicamente 24 meses).</td>
+          <td>El candidato <strong>aún se crea</strong> en el Portal y en Talkpush CRM como una nueva solicitud. La etiqueta te alerta que otra agencia ya ha referido a esta persona. El currículum y los resúmenes de IA se procesan normalmente.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Reglas Clave para la Detección de Duplicados</h3>
+    <ul>
+      <li>La detección es <strong>por país</strong> &mdash; un candidato enviado en India no afecta un envío en Filipinas</li>
+      <li>Se verifican tanto el <strong>email como el teléfono</strong> (si alguno coincide, se cuenta)</li>
+      <li>Los candidatos <strong>retirados</strong> se excluyen &mdash; si un envío anterior fue retirado, el nuevo envío se etiqueta como <span class="tag tag-added">Agregado</span></li>
+      <li>La <strong>ventana de propiedad</strong> (por defecto 24 meses) es configurable por país por tu administrador. Para cambiarla, ve a <strong>Países &rarr; Editar País &rarr; Ventana de Propiedad</strong> (ver <a href="#s13">Sección 13</a>).</li>
+    </ul>
+
+    <h3>Escenarios de Ejemplo</h3>
+    <table>
+      <thead><tr><th>Escenario</th><th>Tiempo Desde el Último Envío</th><th>Resultado de Etiqueta</th></tr></thead>
+      <tbody>
+        <tr><td>Candidato completamente nuevo, nunca enviado antes</td><td>&mdash;</td><td><span class="tag tag-added">Agregado</span></td></tr>
+        <tr><td>Tu agencia envió a esta persona hace 2 meses</td><td>2 meses</td><td><span class="tag tag-prev">Enviado Previamente</span></td></tr>
+        <tr><td>Una agencia diferente envió a esta persona hace 2 meses</td><td>2 meses</td><td><span class="tag tag-dup">Duplicado</span></td></tr>
+        <tr><td>Una agencia diferente envió a esta persona hace 26 meses (ventana expirada)</td><td>26 meses</td><td><span class="tag tag-added">Agregado</span></td></tr>
+        <tr><td>El envío anterior fue retirado por la otra agencia</td><td>2 meses</td><td><span class="tag tag-added">Agregado</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 8 -->
+  <div class="section" id="s8">
+    <h2>8. Detalle del Candidato y Ciclo de Vida</h2>
+
+    <p>Haga clic en el nombre de cualquier candidato para abrir su página de detalle.</p>
+
+    <div class="screenshot-container">
+      <img src="screenshots/candidate-detail.png" alt="Página de Detalle del Candidato mostrando tarjeta de información del candidato con email, teléfono, campaña, estado, etapa, fechas, y secciones para Notas del Reclutador, Comentarios y botón de Retirar">
+      <div class="screenshot-caption">
+        <svg class="caption-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span><strong>Figura 4:</strong> Página de Detalle del Candidato &mdash; el panel izquierdo muestra la información del candidato (email, teléfono, campaña, estado, agregado por, agencia, país), con un botón de Retirar debajo. El panel derecho muestra la etapa del CRM, Notas del Reclutador para la Agencia y una sección de Comentarios para comunicación.</span>
+      </div>
+    </div>
+
+    <h3>Información Mostrada</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Información de Contacto</h4>
+        <ul>
+          <li>Email (con copiar al portapapeles)</li>
+          <li>Teléfono (número completo con código de país)</li>
+          <li>Nombre de la campaña</li>
+          <li>Estado/Etiqueta (codificado por color)</li>
+          <li>Agregado Por (nombre del remitente)</li>
+          <li>Fecha de Alta</li>
+          <li>Nombre de la agencia</li>
+          <li>Fecha de Última Solicitud</li>
+          <li>País</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Sección de Currículum (para candidatos "Agregado")</h4>
+        <ul>
+          <li><strong>Resumen IA</strong> &mdash; Resumen profesional</li>
+          <li><strong>Educación</strong> &mdash; Formación académica</li>
+          <li><strong>Experiencia</strong> &mdash; Experiencia laboral</li>
+          <li>Botón de <strong>Descargar</strong> para el currículum original</li>
+        </ul>
+        <h4 style="margin-top:16px;">Sección de Etapa (para candidatos "Agregado")</h4>
+        <ul>
+          <li>Etapa actual del pipeline en Talkpush CRM</li>
+          <li>Sincronizado en tiempo real al ver la página</li>
+          <li>Notas de rechazo del reclutador (si las hay)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Retirar un Candidato</h3>
+    <p>Solo disponible para candidatos con la etiqueta <span class="tag tag-added">Agregado</span> que no hayan sido retirados previamente.</p>
+    <ol>
+      <li>Haga clic en el botón <strong>"Retirar"</strong></li>
+      <li>Aparece un modal solicitando el <strong>motivo del retiro</strong></li>
+      <li>Ingrese el motivo (obligatorio) y confirme</li>
+      <li>El sistema marca al candidato como retirado en el Portal y sincroniza el estado de retiro con Talkpush CRM</li>
+    </ol>
+
+    <div class="alert alert-info">
+      <strong>Candidatos retirados:</strong>
+      Son excluidos de la detección de duplicados (no "cuentan" para la ventana de propiedad), muestran información de retiro en la página de detalle, y no pueden ser retirados nuevamente.
+    </div>
+  </div>
+
+  <!-- Section 9 -->
+  <div class="section" id="s9">
+    <h2>9. Agency Pool</h2>
+
+    <p>El <strong>Agency Pool</strong> muestra todos los candidatos de todas las agencias dentro de su alcance de permisos. Esta es la vista del administrador de todo el pipeline de candidatos.</p>
+
+    <h3>¿Quién Puede Acceder?</h3>
+    <table>
+      <thead><tr><th>Rol</th><th>Lo Que Ven</th></tr></thead>
+      <tbody>
+        <tr><td><span class="role-badge role-owner">Talkpush Owner</span></td><td>Todos los candidatos (filtrados por empresa seleccionada)</td></tr>
+        <tr><td><span class="role-badge role-company">Company Admin</span></td><td>Todos los candidatos de su empresa</td></tr>
+        <tr><td><span class="role-badge role-agency-admin">Agency Admin</span></td><td>Todos los candidatos de su agencia</td></tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-warning">
+      <strong>Los Agency Users no pueden acceder al Agency Pool</strong> &mdash; solo ven sus propios candidatos en "Mis Candidatos."
+    </div>
+
+    <h3>Funcionalidades</h3>
+    <ul>
+      <li><strong>Filtros:</strong> Filtro por país, búsqueda por nombre/email/teléfono, filtro por etiqueta</li>
+      <li><strong>Paginación:</strong> 50 candidatos por página con navegación Anterior/Siguiente</li>
+      <li><strong>Columnas adicionales:</strong> Agencia y Enviado Por</li>
+    </ul>
+  </div>
+
+  <!-- Section 10 -->
+  <div class="section" id="s10">
+    <h2>10. Gestión de Usuarios</h2>
+
+    <div class="screenshot-container">
+      <img src="screenshots/user-management.png" alt="Página de Gestión de Usuarios mostrando una lista filtrable de usuarios con columnas para Nombre, Email, Agencia, País, Empresa, Estado Activo y Rol de Acceso">
+      <div class="screenshot-caption">
+        <svg class="caption-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span><strong>Figura 5:</strong> Página de Gestión de Usuarios &mdash; lista todos los usuarios con búsqueda, filtro por rol, y pestañas Activos/Pendientes. Las columnas muestran nombre, email, asignación de agencia, país, empresa, estado activo (marca verde) y rol de acceso. El botón "+ Agregar Usuario" crea nuevas cuentas.</span>
+      </div>
+    </div>
+
+    <h3>¿Quién Puede Gestionar Usuarios?</h3>
+    <table>
+      <thead><tr><th>Rol</th><th>Puede Gestionar</th></tr></thead>
+      <tbody>
+        <tr><td><span class="role-badge role-owner">Talkpush Owner</span></td><td>Todos los usuarios de todas las empresas</td></tr>
+        <tr><td><span class="role-badge role-company">Company Admin</span></td><td>Todos los usuarios dentro de su empresa</td></tr>
+        <tr><td><span class="role-badge role-agency-admin">Agency Admin</span></td><td>Usuarios dentro de su agencia únicamente</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Crear un Nuevo Usuario</h3>
+    <table>
+      <thead><tr><th>Campo</th><th>Obligatorio</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td>Nombre</td><td>Sí</td><td>Nombre completo del usuario</td></tr>
+        <tr><td>Email</td><td>Sí</td><td>Debe ser único; se usa para iniciar sesión</td></tr>
+        <tr><td>Nivel de Usuario</td><td>Sí</td><td>Seleccionar rol (igual o inferior al suyo)</td></tr>
+        <tr><td>Agencia</td><td>Condicional</td><td>Obligatorio para roles de Agency Admin y Agency User</td></tr>
+        <tr><td>País</td><td>Condicional</td><td>Obligatorio para el rol de Company Admin</td></tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-info">
+      <strong>Al crear:</strong> Se envía un email de activación con un enlace único (válido por 7 días). Los emails de Talkpush Owner deben terminar en <strong>@talkpush.com</strong>.
+    </div>
+
+    <h3>Acciones en Detalle de Usuario</h3>
+    <ul>
+      <li><strong>Editar Usuario</strong> &mdash; Actualizar nombre, email, foto, rol, estado activo</li>
+      <li><strong>Restablecer Contraseña</strong> &mdash; Establecer una nueva contraseña para el usuario</li>
+      <li><strong>Reenviar Invitación</strong> &mdash; Enviar un nuevo email de activación (nueva expiración de 7 días)</li>
+      <li><strong>Desactivar/Activar</strong> &mdash; Alternar el estado activo del usuario</li>
+    </ul>
+  </div>
+
+  <!-- Section 11 -->
+  <div class="section" id="s11">
+    <h2>11. Gestión de Agencias</h2>
+
+    <p>Solo los <span class="role-badge role-owner">Talkpush Owners</span> y <span class="role-badge role-company">Company Admins</span> pueden crear y gestionar agencias.</p>
+
+    <h3>Crear una Nueva Agencia</h3>
+    <table>
+      <thead><tr><th>Campo</th><th>Obligatorio</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td>Nombre</td><td>Sí</td><td>Nombre de la agencia</td></tr>
+        <tr><td>País</td><td>Sí</td><td>En qué país/instancia CRM opera esta agencia</td></tr>
+        <tr><td>Logo</td><td>No</td><td>Logo de la agencia (cargado como imagen)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-success">
+      <strong>Asignación Automática:</strong> Las nuevas agencias se asignan automáticamente a todas las campañas activas en su país. Las nuevas campañas se asignan automáticamente a todas las agencias activas en ese país.
+    </div>
+
+    <h3>Cascada de Habilitar/Deshabilitar Agencia</h3>
+    <p>Cuando <strong>deshabilita una agencia</strong>, todos los usuarios dentro de ella se deshabilitan automáticamente. Cuando <strong>la rehabilita</strong>, todos los usuarios se rehabilitan.</p>
+  </div>
+
+  <!-- Section 12 -->
+  <div class="section" id="s12">
+    <h2>12. Gestión de Campañas</h2>
+
+    <p>Las campañas representan <strong>posiciones activas de reclutamiento o vacantes</strong>. Solo los <span class="role-badge role-owner">Talkpush Owners</span> y <span class="role-badge role-company">Company Admins</span> pueden gestionar campañas.</p>
+
+    <div class="screenshot-container">
+      <img src="screenshots/campaigns-list.png" alt="Página de Campañas mostrando campañas agrupadas por país (Egipto, India, México, Filipinas) con columnas para Nombre, ID, Agregado Por, Empresa y Fecha de Alta">
+      <div class="screenshot-caption">
+        <svg class="caption-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span><strong>Figura 6:</strong> Página de Campañas &mdash; las campañas están agrupadas por país (Egipto, India, México, Filipinas, etc.) y muestran el nombre de la campaña, ID del CRM de Talkpush (insignia azul), empresa, fecha de creación y un menú de acciones de 3 puntos. Use la barra de búsqueda o el botón "+ Agregar Campaña" en la parte superior.</span>
+      </div>
+    </div>
+
+    <h3>Crear una Campaña</h3>
+    <table>
+      <thead><tr><th>Campo</th><th>Obligatorio</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td>Nombre de Campaña</td><td>Sí</td><td>Nombre visible de la campaña</td></tr>
+        <tr><td>ID de Campaña</td><td>Sí</td><td>ID externo de Talkpush CRM (debe coincidir exactamente)</td></tr>
+        <tr><td>País</td><td>Sí</td><td>A qué instancia CRM pertenece esta campaña</td></tr>
+      </tbody>
+    </table>
+
+    <p>Las <strong>campañas activas</strong> aparecen en el menú desplegable del formulario de envío de candidatos. Las <strong>campañas inactivas</strong> se ocultan del formulario pero los candidatos existentes no se ven afectados.</p>
+  </div>
+
+  <!-- Section 13 -->
+  <div class="section" id="s13">
+    <h2>13. Gestión de Países e Instancias CRM</h2>
+
+    <p>En el Agency Portal, los "Países" representan <strong>instancias de Talkpush CRM</strong>.</p>
+
+    <h3>Crear un País</h3>
+    <table>
+      <thead><tr><th>Campo</th><th>Obligatorio</th><th>Descripción</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td>Nombre</td><td>Sí</td><td>Nombre del país/instancia</td><td>"India"</td></tr>
+        <tr><td>URL de Instancia</td><td>Sí</td><td>La dirección web del CRM de Talkpush para este país</td><td>"https://concentrix-india.talkpush.com"</td></tr>
+        <tr><td>API Key</td><td>Sí</td><td>La clave de conexión proporcionada por Talkpush para esta instancia CRM</td><td>(Proporcionada por Talkpush)</td></tr>
+        <tr><td>CRM Email</td><td>No</td><td>La dirección de email utilizada al sincronizar datos con el CRM</td><td>"admin@company.com"</td></tr>
+        <tr><td>Ventana de Propiedad</td><td>No</td><td>Meses para detección de duplicados (predeterminado: 24)</td><td>"24"</td></tr>
+        <tr><td>Ver Etapas</td><td>No</td><td>Permitir que los no-propietarios vean las etapas del pipeline</td><td>Sí/No</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Ventana de Propiedad</h3>
+    <div class="card card-accent">
+      <p>La <strong>ventana de propiedad</strong> determina cuánto tiempo un candidato "pertenece" a la agencia que lo envió. <strong>Predeterminado: 24 meses.</strong></p>
+      <p>Si la Agencia A envía un candidato, y la Agencia B intenta enviar al mismo candidato dentro de los 24 meses, será etiquetado como <span class="tag tag-dup">Duplicado</span>. Después de 24 meses, el candidato puede ser enviado nuevamente como <span class="tag tag-added">Agregado</span>.</p>
+    </div>
+  </div>
+
+  <!-- Section 14 -->
+  <div class="section" id="s14">
+    <h2>14. Gestión de Carpetas</h2>
+
+    <p>Las carpetas corresponden a <strong>etapas del pipeline</strong> en Talkpush CRM. Muestran la etapa actual del recorrido de un candidato.</p>
+
+    <div class="screenshot-container">
+      <img src="screenshots/folders.png" alt="Página de Gestión de Carpetas mostrando una cuadrícula de tarjetas de carpetas incluyendo Bandeja de Entrada, Completado, Preseleccionado, En espera, Rechazado, Contratado, Sin respuesta, Entrevista TA y Evaluación con descripciones">
+      <div class="screenshot-caption">
+        <svg class="caption-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span><strong>Figura 7:</strong> Página de Gestión de Carpetas &mdash; las carpetas representan etapas del pipeline (Bandeja de Entrada, Completado, Preseleccionado, En espera, Rechazado, Contratado, Sin respuesta, Entrevista TA, Evaluación) mostradas como tarjetas con descripciones. Cada carpeta corresponde a una carpeta del CRM de Talkpush. Use "+ Agregar Nuevo" para crear carpetas adicionales.</span>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th>Campo</th><th>Obligatorio</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td>Nombre de Carpeta</td><td>Sí</td><td>Nombre visible de la etapa</td></tr>
+        <tr><td>ID de Carpeta</td><td>Sí</td><td>ID externo de Talkpush CRM</td></tr>
+        <tr><td>Descripción</td><td>No</td><td>Descripción de esta etapa del pipeline</td></tr>
+      </tbody>
+    </table>
+
+    <p>Al ver la página de detalle de un candidato, el sistema consulta Talkpush CRM para obtener la carpeta/etapa actual y la compara con las carpetas configuradas.</p>
+  </div>
+
+  <!-- Section 15 -->
+  <div class="section" id="s15">
+    <h2>15. Gestión de Empresas (Multi-Tenencia)</h2>
+
+    <p>Las empresas son la <strong>unidad organizativa de nivel superior</strong>. Cada empresa es un espacio de trabajo separado con sus propios países, agencias y usuarios. Solo los <span class="role-badge role-owner">Talkpush Owners</span> pueden gestionar empresas.</p>
+
+    <table>
+      <thead><tr><th>Campo</th><th>Obligatorio</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td>Nombre</td><td>Sí</td><td>Identificador de la empresa</td></tr>
+        <tr><td>Nombre de Marca</td><td>No</td><td>Nombre visible para marca</td></tr>
+        <tr><td>CRM Email</td><td>No</td><td>Email predeterminado del CRM</td></tr>
+        <tr><td>URL del Portal</td><td>No</td><td>URL personalizada del portal</td></tr>
+        <tr><td>Email del Remitente</td><td>No</td><td>Dirección de email del remitente para notificaciones</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Selección de Contexto de Empresa</h3>
+    <p>Los Talkpush Owners pueden seleccionar una empresa desde la página de Empresas para filtrar todos los datos a esa empresa. Aparece una barra de contexto en la parte superior. Haga clic en <strong>X</strong> para limpiar.</p>
+  </div>
+
+  <!-- Section 16 -->
+  <div class="section" id="s16">
+    <h2>16. Métricas y Dashboard de Analíticas</h2>
+
+    <p>Disponible para <span class="role-badge role-owner">Talkpush Owners</span> y <span class="role-badge role-company">Company Admins</span>.</p>
+
+    <div class="screenshot-container">
+      <img src="screenshots/metrics-view.png" alt="Dashboard de Métricas mostrando tarjetas resumen para Agregado (1005), Enviado Previamente (54), Duplicado (47) y Retirado (18), con gráfico de barras de Comparación de Agencias y gráfico de líneas de Volumen en el Tiempo debajo">
+      <div class="screenshot-caption">
+        <svg class="caption-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span><strong>Figura 8:</strong> Dashboard de Métricas &mdash; la fila superior muestra tarjetas resumen codificadas por color (Agregado, Enviado Previamente, Duplicado, Retirado) con totales. Debajo hay dos gráficos: Comparación de Agencias (gráfico de barras comparando agencias) y Volumen en el Tiempo (gráfico de líneas rastreando tendencias). Los filtros de período, país y agencia están disponibles en la parte superior.</span>
+      </div>
+    </div>
+
+    <h3>Filtros</h3>
+    <table>
+      <thead><tr><th>Filtro</th><th>Opciones</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Período</strong></td><td>Hoy, Esta Semana, Semana Pasada, Este Mes, Mes Pasado, Este Trimestre, Trimestre Pasado, Este Año, Año Pasado</td></tr>
+        <tr><td><strong>País</strong></td><td>Todos los países en alcance</td></tr>
+        <tr><td><strong>Agencias</strong></td><td>Selección múltiple con búsqueda y "Seleccionar Todo"</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Tarjetas Resumen de Métricas</h3>
+    <div class="grid-4">
+      <div class="metric-card metric-green"><div class="metric-label">Agregado</div><div class="metric-value">&#10003;</div></div>
+      <div class="metric-card metric-amber"><div class="metric-label">Enviado Previamente</div><div class="metric-value">&#9888;</div></div>
+      <div class="metric-card metric-purple"><div class="metric-label">Duplicado</div><div class="metric-value">&#10007;</div></div>
+      <div class="metric-card metric-red"><div class="metric-label">Retirado</div><div class="metric-value">&#8635;</div></div>
+    </div>
+
+    <h3>Gráficos</h3>
+    <ul>
+      <li><strong>Gráfico de Comparación de Agencias (Barras)</strong> &mdash; Gráfico de barras agrupadas comparando agencias con barras codificadas por color para cada tipo de etiqueta</li>
+      <li><strong>Gráfico de Volumen en el Tiempo (Líneas)</strong> &mdash; Tendencias de envío a lo largo del tiempo con líneas separadas por agencia + etiqueta</li>
+    </ul>
+
+    <h3>Tabla de Datos</h3>
+    <p>Tabla detallada con una fila por agencia, columnas para cada tipo de etiqueta + total, y una fila de totales en la parte inferior.</p>
+  </div>
+
+  <!-- Section 17 -->
+  <div class="section" id="s17">
+    <h2>17. Informes y Exportación a Excel</h2>
+
+    <h3>Filtros de Informes</h3>
+    <ul>
+      <li><strong>Rango de Fechas</strong> &mdash; Fecha de inicio y fin</li>
+      <li><strong>País</strong> &mdash; Filtrar por país específico</li>
+    </ul>
+
+    <h3>Columnas de Exportación a Excel</h3>
+    <table>
+      <thead><tr><th>Columna</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td>Nombre</td><td>Nombre del candidato</td></tr>
+        <tr><td>Apellido</td><td>Apellido del candidato</td></tr>
+        <tr><td>Email</td><td>Dirección de email</td></tr>
+        <tr><td>Teléfono</td><td>Número de teléfono completo</td></tr>
+        <tr><td>Agencia</td><td>Nombre de la agencia</td></tr>
+        <tr><td>País</td><td>País de la campaña</td></tr>
+        <tr><td>Fecha de Alta</td><td>Marca de tiempo del envío</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 18 -->
+  <div class="section" id="s18">
+    <h2>18. Importación de Datos y Limpieza</h2>
+
+    <p>Solo los <span class="role-badge role-owner">Talkpush Owners</span> con acceso elevado pueden usar esta función.</p>
+
+    <div class="alert alert-warning">
+      <strong>ADVERTENCIA: Operación Destructiva</strong>
+      La herramienta "Limpiar Datos" elimina TODOS los datos del ámbito de la empresa incluyendo candidatos, comentarios, agencias, usuarios, campañas, carpetas y países. Esta acción no se puede deshacer.
+    </div>
+  </div>
+
+  <!-- Section 19 -->
+  <div class="section" id="s19">
+    <h2>19. Gestión de Perfil</h2>
+
+    <p>Haga clic en su nombre/avatar en la esquina superior derecha &rarr; seleccione <strong>"Editar Perfil"</strong>.</p>
+
+    <table>
+      <thead><tr><th>Campo</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td>Nombre</td><td>Su nombre visible</td></tr>
+        <tr><td>Email</td><td>Su email de inicio de sesión</td></tr>
+        <tr><td>Foto</td><td>Foto de perfil (cargada como imagen)</td></tr>
+        <tr><td>Contraseña</td><td>Cambiar contraseña (ingrese la nueva contraseña)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 20 -->
+  <div class="section" id="s20">
+    <h2>20. Sistema de Etiquetado de Candidatos (Detección de Duplicados y Propiedad)</h2>
+
+    <p>El sistema de etiquetado categoriza automáticamente cada envío para ayudar a rastrear referencias duplicadas. Para una explicación completa de cómo funcionan las etiquetas y escenarios de ejemplo, vea la <a href="#s7">Sección 7: El Flujo de Envío de Candidatos</a>.</p>
+
+    <h3>Tipos de Etiquetas</h3>
+    <table>
+      <thead><tr><th>Etiqueta</th><th>Significado</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag tag-added">Agregado</span></td><td>Candidato nuevo &mdash; primer envío, propiedad expirada, o envío previo retirado</td></tr>
+        <tr><td><span class="tag tag-prev">Enviado Previamente</span></td><td>Su misma agencia ya envió a esta persona dentro de la ventana de propiedad</td></tr>
+        <tr><td><span class="tag tag-dup">Duplicado</span></td><td>Una agencia diferente ya envió a esta persona dentro de la ventana de propiedad</td></tr>
+        <tr><td><span class="tag tag-withdrawn">Retirado</span></td><td>El candidato fue retirado del pipeline</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Ventana de Propiedad</h3>
+    <p>La ventana de propiedad es el período de tiempo (predeterminado <strong>24 meses</strong>) durante el cual un candidato "pertenece" a la agencia que lo envió primero. Después de que esta ventana expira, cualquier nuevo envío se trata como <span class="tag tag-added">Agregado</span>. La ventana puede ser configurada por país por su administrador.</p>
+
+    <div class="alert alert-info">
+      <strong>Puntos Clave:</strong> La detección es por país. Se verifican tanto email como teléfono. Los candidatos retirados son excluidos. Todos los candidatos se crean en el CRM independientemente de la etiqueta &mdash; la etiqueta es solo informativa.
+    </div>
+  </div>
+
+  <!-- Section 21 -->
+  <div class="section" id="s21">
+    <h2>21. Integración con Talkpush CRM</h2>
+
+    <h3>Cómo se Conecta el Portal con Talkpush</h3>
+    <p>Cada <strong>país</strong> en el Portal está vinculado a una instancia específica de Talkpush CRM. Esto significa que los candidatos enviados para campañas en diferentes países van al CRM correcto automáticamente.</p>
+
+    <h3>Qué Se Sincroniza</h3>
+    <table>
+      <thead><tr><th>Datos</th><th>Dirección</th><th>Cuándo</th></tr></thead>
+      <tbody>
+        <tr><td>Nuevo candidato</td><td>Portal &rarr; CRM</td><td>Cuando se envía un candidato</td></tr>
+        <tr><td>Archivo de currículum</td><td>Portal &rarr; CRM</td><td>Cuando se envía un candidato con currículum</td></tr>
+        <tr><td>Resúmenes IA del currículum</td><td>Portal &rarr; CRM</td><td>Después de que se analiza el currículum</td></tr>
+        <tr><td>Comentarios</td><td>Portal &rarr; CRM</td><td>Cuando se agrega un comentario sobre un candidato</td></tr>
+        <tr><td>Estado de retiro</td><td>Portal &rarr; CRM</td><td>Cuando se retira un candidato</td></tr>
+        <tr><td>Etapa del pipeline (carpeta)</td><td>CRM &rarr; Portal</td><td>Al ver la página de detalle de un candidato</td></tr>
+        <tr><td>Notas del reclutador</td><td>CRM &rarr; Portal</td><td>Al ver la página de detalle de un candidato</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Qué Sucede si el CRM Rechaza o No Está Disponible</h3>
+    <ul>
+      <li>El candidato <strong>siempre se guarda primero en el Portal</strong> &mdash; no se pierden datos independientemente de lo que haga el CRM</li>
+      <li>Si el CRM rechaza al candidato (por ejemplo, el CRM no permite duplicados para ese cliente), verá un mensaje de advertencia: <em>"Candidato creado exitosamente, pero no se pudo agregar a Talkpush CRM"</em></li>
+      <li>Si el CRM no está disponible temporalmente, aparece la misma advertencia &mdash; el candidato existe en el Portal pero no en el CRM</li>
+      <li>Los fallos en la carga de currículum no bloquean la creación del candidato</li>
+      <li>Los fallos en la sincronización de comentarios no impiden que el comentario se guarde en el Portal</li>
+      <li>Si ve advertencias del CRM de forma consistente, contacte a su administrador &mdash; la configuración del CRM para ese país puede necesitar revisión</li>
+    </ul>
+  </div>
+
+  <!-- Section 22 -->
+  <div class="section" id="s22">
+    <h2>22. Procesamiento de Currículum con IA</h2>
+
+    <h3>Cómo Funciona</h3>
+    <div class="flow-step"><div class="flow-number">1</div><div class="flow-content"><h4>Cargar Currículum</h4><p>Usted adjunta un archivo PDF o DOCX al enviar un candidato</p></div></div>
+    <div class="flow-step"><div class="flow-number">2</div><div class="flow-content"><h4>Extracción de Texto</h4><p>El sistema lee el contenido de su archivo de currículum automáticamente</p></div></div>
+    <div class="flow-step"><div class="flow-number">3</div><div class="flow-content"><h4>Análisis con IA</h4><p>Un modelo de IA analiza el contenido del currículum</p></div></div>
+    <div class="flow-step"><div class="flow-number">4</div><div class="flow-content"><h4>Se Generan Tres Resúmenes</h4><p><strong>Resumen Profesional</strong>, <strong>Educación</strong> y <strong>Experiencia</strong></p></div></div>
+
+    <h3>Dónde Se Usan los Datos de IA</h3>
+    <ul>
+      <li><strong>Página de Detalle del Candidato</strong> &mdash; Se muestra en la sección de Currículum</li>
+      <li><strong>Talkpush CRM</strong> &mdash; Enviado como atributos personalizados</li>
+    </ul>
+
+    <h3>Limitaciones</h3>
+    <ul>
+      <li>Tamaño máximo de archivo: <strong>10MB</strong></li>
+      <li>Formatos soportados: solo PDF (.pdf) y Word (.docx)</li>
+      <li>Los currículos en idiomas distintos al inglés pueden tener menor calidad en los resúmenes</li>
+      <li>Los PDFs escaneados (basados en imagen) pueden no extraer el texto correctamente</li>
+    </ul>
+  </div>
+
+  <!-- Section 23 -->
+  <div class="section" id="s23">
+    <h2>23. Comentarios y Sincronización con CRM</h2>
+
+    <h3>Agregar Comentarios</h3>
+    <ol>
+      <li>Escriba su comentario en el área de texto en la página de detalle del candidato</li>
+      <li>Haga clic en <strong>"Agregar Comentario"</strong></li>
+      <li>El comentario se guarda localmente Y se sincroniza con Talkpush CRM (sin bloqueo)</li>
+    </ol>
+
+    <h3>Detalles de Sincronización con CRM</h3>
+    <ul>
+      <li>Los comentarios se sincronizan <strong>HACIA</strong> Talkpush solamente (no de Talkpush de vuelta al Portal)</li>
+      <li>Cada comentario se atribuye al email del administrador CRM configurado para el país</li>
+      <li>Si la sincronización con el CRM falla, el comentario aún se guarda localmente</li>
+      <li>Los comentarios se muestran en orden cronológico con nombre del autor, foto y marca de tiempo</li>
+    </ul>
+  </div>
+
+  <!-- Section 24 -->
+  <div class="section" id="s24">
+    <h2>24. Sistema de Cascada Habilitar/Deshabilitar</h2>
+
+    <p>El Agency Portal implementa un patrón de <strong>cascada habilitar/deshabilitar</strong> que mantiene la integridad de datos a través de la jerarquía.</p>
+
+    <div class="cascade-tree">
+      <div class="level-0">País deshabilitado</div>
+      <div class="level-1">&boxur;&mdash; Todas las agencias en el país &rarr; deshabilitadas</div>
+      <div class="level-2">&boxur;&mdash; Todos los usuarios en esas agencias &rarr; deshabilitados</div>
+      <br>
+      <div class="level-0">Agencia deshabilitada</div>
+      <div class="level-1">&boxur;&mdash; Todos los usuarios en la agencia &rarr; deshabilitados</div>
+    </div>
+
+    <h3>Qué Significa Deshabilitado</h3>
+    <table>
+      <thead><tr><th>Entidad Deshabilitada</th><th>Efecto</th></tr></thead>
+      <tbody>
+        <tr><td><strong>País</strong></td><td>Todas las agencias + todos los usuarios deshabilitados</td></tr>
+        <tr><td><strong>Agencia</strong></td><td>Todos los usuarios deshabilitados</td></tr>
+        <tr><td><strong>Usuario</strong></td><td>Solo ese usuario deshabilitado</td></tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-info">
+      <strong>Importante:</strong> Los usuarios deshabilitados no pueden iniciar sesión. Los candidatos permanecen visibles independientemente del estado de la entidad. Los datos históricos se preservan &mdash; nada se elimina. El sistema siempre verifica que el usuario, su agencia y su país estén todos activos antes de conceder acceso.
+    </div>
+  </div>
+
+  <!-- Section 25 -->
+  <div class="section" id="s25">
+    <h2>25. Características de Seguridad</h2>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>Autenticación</h4>
+        <table>
+          <tbody>
+            <tr><td>Contraseñas</td><td>Hash seguro &mdash; nunca almacenadas en texto plano</td></tr>
+            <tr><td>Sesiones</td><td>Expiran después de 30 días de inactividad</td></tr>
+            <tr><td>Enlaces de activación</td><td>Válidos por 7 días después de ser enviados</td></tr>
+            <tr><td>Enlaces de restablecimiento de contraseña</td><td>Válidos por 1 hora</td></tr>
+            <tr><td>Cookies</td><td>Encriptadas y aseguradas en producción</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h4>Autorización</h4>
+        <table>
+          <tbody>
+            <tr><td>Acceso basado en roles</td><td>4 roles con permisos específicos por rol</td></tr>
+            <tr><td>Prevención de escalación</td><td>Los usuarios no pueden asignar roles superiores al suyo</td></tr>
+            <tr><td>Filtrado automático de alcance</td><td>Solo ve datos relevantes a su rol</td></tr>
+            <tr><td>Aislamiento de empresa</td><td>Los datos de cada empresa están completamente separados</td></tr>
+            <tr><td>Anulación de admin de plataforma</td><td>Los administradores de la plataforma Talkpush pueden acceder a todas las empresas</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 26 -->
+  <div class="section" id="s26">
+    <h2>26. Preguntas Frecuentes</h2>
+
+    <h3>Candidatos</h3>
+    <div class="card" style="margin-bottom:12px;">
+      <h4>&iquest;Por qué mi candidato fue etiquetado como "Duplicado"?</h4>
+      <p>Otra agencia envió un candidato con el mismo email o número de teléfono dentro de la ventana de propiedad (generalmente 24 meses).</p>
+    </div>
+    <div class="card" style="margin-bottom:12px;">
+      <h4>&iquest;Puedo cambiar la etiqueta de un candidato?</h4>
+      <p>Las etiquetas se determinan automáticamente y no se pueden cambiar manualmente.</p>
+    </div>
+    <div class="card" style="margin-bottom:12px;">
+      <h4>&iquest;Qué sucede cuando retiro un candidato?</h4>
+      <p>El candidato se marca como retirado tanto en el Portal como en Talkpush CRM. Se excluye de la detección de duplicados futura.</p>
+    </div>
+    <div class="card" style="margin-bottom:12px;">
+      <h4>&iquest;Puedo ver candidatos enviados por otros reclutadores de mi agencia?</h4>
+      <p>Solo si usted es un Agency Admin (a través del Agency Pool). Los Agency Users regulares solo pueden ver sus propios candidatos.</p>
+    </div>
+    <div class="card" style="margin-bottom:12px;">
+      <h4>&iquest;Por qué no puedo ver la columna "Etapa"?</h4>
+      <p>La visibilidad de la columna de etapa es una configuración por país controlada por su administrador. Si no puede verla, su administrador puede haber deshabilitado la visibilidad de etapas para su país.</p>
+    </div>
+
+    <h3>Currículos</h3>
+    <div class="card" style="margin-bottom:12px;">
+      <h4>&iquest;Qué tipos de archivo puedo cargar?</h4>
+      <p>PDF (.pdf) y documentos Word (.docx). El tamaño máximo de archivo es 10MB.</p>
+    </div>
+    <div class="card" style="margin-bottom:12px;">
+      <h4>&iquest;Se envía el currículum a Talkpush?</h4>
+      <p>Sí, el archivo original del currículum se carga en Talkpush CRM como un documento adjunto.</p>
+    </div>
+
+    <h3>Usuarios y Acceso</h3>
+    <div class="card" style="margin-bottom:12px;">
+      <h4>Mi enlace de activación expiró. &iquest;Qué hago?</h4>
+      <p>Solicite a su administrador que haga clic en "Reenviar Invitación" en su perfil de usuario.</p>
+    </div>
+    <div class="card" style="margin-bottom:12px;">
+      <h4>&iquest;Por qué no puedo iniciar sesión?</h4>
+      <p>Posibles razones: (1) Cuenta desactivada, (2) Agencia deshabilitada, (3) País deshabilitado, (4) Credenciales incorrectas, (5) Cuenta aún no activada.</p>
+    </div>
+  </div>
+
+  <!-- Section 27 -->
+  <div class="section" id="s27">
+    <h2>27. Glosario</h2>
+
+    <table>
+      <thead><tr><th>Término</th><th>Definición</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Agencia</strong></td><td>Una agencia externa de personal o reclutamiento que envía candidatos</td></tr>
+        <tr><td><strong>Agency Pool</strong></td><td>La vista combinada de todos los candidatos de todas las agencias (visible para administradores)</td></tr>
+        <tr><td><strong>Campaña</strong></td><td>Una posición de reclutamiento o vacante a la que las agencias envían candidatos</td></tr>
+        <tr><td><strong>Cascada de Deshabilitación</strong></td><td>Cuando deshabilitar una entidad padre (por ejemplo, un país) deshabilita automáticamente todas las entidades hijas (por ejemplo, agencias y usuarios)</td></tr>
+        <tr><td><strong>Empresa</strong></td><td>Unidad organizativa de nivel superior; cada empresa es un espacio de trabajo separado</td></tr>
+        <tr><td><strong>País</strong></td><td>Una conexión de Talkpush CRM con su propia configuración (ventana de propiedad, visibilidad de etapas, etc.)</td></tr>
+        <tr><td><strong>Duplicado</strong></td><td>Etiqueta que indica que otra agencia ya envió a esta persona dentro de la ventana de propiedad</td></tr>
+        <tr><td><strong>Carpeta / Etapa</strong></td><td>Una etapa del pipeline en Talkpush CRM (por ejemplo, &ldquo;Nuevo Aplicante&rdquo;, &ldquo;Entrevista&rdquo;)</td></tr>
+        <tr><td><strong>Ventana de Propiedad</strong></td><td>Período de tiempo configurable (predeterminado 24 meses) durante el cual un candidato &ldquo;pertenece&rdquo; a la agencia que lo envió</td></tr>
+        <tr><td><strong>Enviado Previamente</strong></td><td>Etiqueta que indica que su propia agencia ya envió a esta persona</td></tr>
+        <tr><td><strong>Etiqueta</strong></td><td>Categorización automática asignada a cada candidato al ser enviado (Agregado, Enviado Previamente o Duplicado)</td></tr>
+        <tr><td><strong>Ver Etapas</strong></td><td>Una configuración por país que controla si los usuarios pueden ver las etapas del pipeline para los candidatos</td></tr>
+        <tr><td><strong>Retiro</strong></td><td>Remover a un candidato del pipeline activo tanto en el Portal como en Talkpush CRM</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Appendix A: Navigation Permission Map -->
+  <div class="section" id="appendix-a">
+    <h2>Apéndice A: Acceso a Páginas por Rol</h2>
+    <p>Esta tabla muestra qué páginas son visibles según su rol.</p>
+    <table>
+      <thead><tr><th>Página</th><th>Quién Puede Acceder</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Mis Candidatos</strong></td><td>Todos los usuarios</td></tr>
+        <tr><td><strong>Agency Pool</strong></td><td>Agency Admin, Company Admin, Owner</td></tr>
+        <tr><td><strong>Usuarios</strong></td><td>Agency Admin (su propia agencia), Company Admin, Owner</td></tr>
+        <tr><td><strong>Agencias</strong></td><td>Company Admin, Owner</td></tr>
+        <tr><td><strong>Métricas</strong></td><td>Company Admin, Owner</td></tr>
+        <tr><td><strong>Campañas</strong></td><td>Company Admin, Owner</td></tr>
+        <tr><td><strong>Carpetas</strong></td><td>Company Admin, Owner</td></tr>
+        <tr><td><strong>Países</strong></td><td>Company Admin, Owner</td></tr>
+        <tr><td><strong>Configuración de Empresa</strong></td><td>Solo Owner</td></tr>
+        <tr><td><strong>Importar Datos</strong></td><td>Solo Owner</td></tr>
+        <tr><td><strong>Informes</strong></td><td>Company Admin, Owner</td></tr>
+        <tr><td><strong>Editar Perfil</strong></td><td>Todos los usuarios</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <img src="talkpush-logo.png" alt="Talkpush" style="height: 20px; opacity: 0.6; margin-bottom: 8px;">
+    <p>Talkpush Agency Portal &mdash; Documentación del Usuario &bull; Versión 1.3 &bull; Febrero 2026</p>
+  </div>
+</div>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr;</button>
+
+<script>
+  // Back to top button visibility
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('backToTop');
+    if (window.scrollY > 400) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+
+  // Active TOC link highlighting
+  const sections = document.querySelectorAll('.section');
+  const tocLinks = document.querySelectorAll('.toc-link');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        tocLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -75% 0px' });
+
+  sections.forEach(section => observer.observe(section));
+
+  // Smooth scroll for TOC links
+  tocLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
